@@ -28,7 +28,22 @@ public:
 	void askQuestion();
 	void waitForAnswer();
 
+	void* taThreadHandler();
+	void* studentThreadHandler();
+
+
 protected:
+	unsigned int students_num;
+	unsigned int max_waiting_students;
+	typedef struct waiting_students {
+		struct waiting_students *next;
+		unsigned int studentID;
+		StudentStatus status;
+		pthread_t waitingStudents;
+	}* waiting_students_t;
+	waiting_students_t waiting_students_list;
+	pthread_t * ta;
+	bool doorClosed;
 	// TODO: define the member variables
 	// Remember: you can only use mutexes and condition variables!
 };
