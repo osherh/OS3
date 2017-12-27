@@ -14,7 +14,7 @@ typedef struct {
 
 void* ThreadHandler(void* thread_handler_args);
    
-int maxTest() {
+int main() {
    // CREATE THREADS
    // EVERY TIME A THREAD ARRIVES TO A MOVIE PRINT IT
    // FINISH AND GO TO SLEEP
@@ -44,6 +44,7 @@ void* ThreadHandler(void* thread_handler_args) {
    Barrier* bari_t = recv_args->barrier;
    int num = recv_args->num;
    bari_t->wait();
+    printf("test\n");
    std::cout << "Thread number " << num << " has arrived"  << std::endl;
    free(recv_args);
    return NULL;
